@@ -162,7 +162,11 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
 
     override fun onDestroy() {
         fusedLocationProviderClient.removeLocationUpdates(locationCallback)
-        geoFire.removeLocation(FirebaseAuth.getInstance().currentUser?.uid)
+
+        FirebaseAuth.getInstance().currentUser?.uid?.let { currentUserID ->
+            geoFire.removeLocation(currentUserID)
+        }
+
         onlineRef.removeEventListener(onlineValueEventListener)
         super.onDestroy()
     }
