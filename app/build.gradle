@@ -59,6 +59,8 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:8.0.0'
     //Firebase Database
     implementation 'com.google.firebase:firebase-database:20.0.3'
+    //Firebase Cloud Messaging
+    implementation 'com.google.firebase:firebase-messaging:23.0.0'
 
     //Coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'

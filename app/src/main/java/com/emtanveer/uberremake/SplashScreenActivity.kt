@@ -6,18 +6,23 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.emtanveer.uberremake.model.DriverInfoModel
+import com.emtanveer.uberremake.utils.UserUtils
 import com.firebase.ui.auth.AuthMethodPickerLayout
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
+import com.firebase.ui.auth.data.model.User
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.iid.FirebaseInstanceIdReceiver
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.*
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -62,6 +67,14 @@ class SplashScreenActivity : AppCompatActivity() {
             val user = myFirebaseAuth.currentUser
 
             if (user != null) {
+                FirebaseMessaging.getInstance()
+                    .token
+                    .addOnFailureListener{ error ->
+                        Toast.makeText(this@SplashScreenActivity, error.message.toString(), Toast.LENGTH_LONG).show()
+                    }.addOnSuccessListener { firebaseMessageToken ->
+                        Log.d("TOKEN", firebaseMessageToken)
+                        UserUtils.updateToken(this@SplashScreenActivity, firebaseMessageToken)
+                    }
                 checkUserFromFirebase()
             } else {
                 showLoginLayout()
