@@ -17,7 +17,7 @@
     <!--Splash Screen Theme Style-->
     <style name="SplashTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="android:windowFullscreen">true</item>
-        <item name="android:windowBackground">@drawable/rider_splash_screen</item>
+        <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 
     <!--Login Theme Style-->

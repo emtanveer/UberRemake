@@ -33,6 +33,7 @@ class DriverHomeActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityDriverHomeBinding
     private var navView: NavigationView? = null
+    private var drawerLayout: DrawerLayout? = null
     private lateinit var navController: NavController
     private lateinit var imgAvatar: ImageView
     private lateinit var waitingDialog: AlertDialog
@@ -54,7 +55,7 @@ class DriverHomeActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarDriverHome.toolbar)
 
 
-        val drawerLayout: DrawerLayout = binding.drawerLayout
+        drawerLayout = binding.drawerLayout
         navView = binding.navView
         navController = findNavController(R.id.nav_host_fragment_content_driver_home)
         // Passing each menu ID as a set of Ids because each

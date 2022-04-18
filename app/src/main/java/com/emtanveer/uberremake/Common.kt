@@ -61,6 +61,7 @@ object Common {
 
     const val NOTI_BODY: String = "body"
     const val NOTI_TITLE: String = "title"
+
     const val TOKEN_REFERENCE: String = "Token"
     const val DRIVERS_LOCATION_REFERENCE: String = "DriversLocation"
     const val DRIVER_INFO_REFERENCE:String = "DriverInfo"
